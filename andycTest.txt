@@ -3,5 +3,8 @@ class andy{
 }
 
 class hans{
-
+	String s = "what the fuck";
+	hans(){
+		println(s);
+	}
 }
