@@ -6,7 +6,7 @@ ball bs[] = new ball[6000];
 
 chiuhans hans = new chiuhans("hi everyone i am hans XDD");
 
-int a=500;
+int a=123;
 
 int bb = 100;
 int db = 100;
