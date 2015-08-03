@@ -1,7 +1,7 @@
 PImage sword;
 
-ball b = new ball(200,200,100,0.8,#28FACE,500);
-ball d = new ball(200,200,100,0.8,#FF820D,500);
+ball b = new ball(200,200,100,0.7,#28FACE,20000);
+ball d = new ball(200,200,100,0.7,#FF820D,20000);
 ball bs[] = new ball[1056];
 
 
