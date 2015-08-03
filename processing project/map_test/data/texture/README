@@ -1,2 +1,6 @@
 這邊放的是方塊的材質
 大小 8X8
+在processing中 用 loadImage("data/texture/檔名") 存取
+
+實際新增到方塊資料庫bddb的方法
+new blockData([最大生命值],[開採工具編號],[挖掘係數],[防禦係數],[透明度],[亮度],loadImage("data/texture/[方塊名稱].png"))
