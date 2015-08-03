@@ -4,6 +4,7 @@ ball b = new ball(200,200,100,0.7,#28FACE,20000);
 ball d = new ball(200,200,100,0.7,#FF820D,20000);
 ball bs[] = new ball[1056];
 
+chiuhans hans = new chiuhans("hi everyone i am hans XDD");
 
 int a=200;
 
@@ -20,6 +21,7 @@ void setup(){
   }
   initPar();
   sword = loadImage("sword.png");
+  fighting = loadImage("FIGHTING.png");
 }
 
 void draw(){
@@ -92,6 +94,8 @@ void draw(){
   for(int i=0;i<9999;i++) par[i].upd();
   for(int i=0;i<9999;i++) par[i].drw();
   */
+  
+  hans.drw();
 }
 
 boolean press[] = new boolean[256];
