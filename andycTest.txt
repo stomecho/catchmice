@@ -1,5 +1,17 @@
 class andy{
-
+void setup(){
+}
+void draw(){
+}void setup(){
+}
+void draw(){
+}void setup(){
+}
+void draw(){
+}void setup(){
+}
+void draw(){
+}
 }
 
 class hans{
