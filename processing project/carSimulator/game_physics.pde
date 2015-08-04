@@ -1,5 +1,7 @@
 void update(){ 
-  
+  cowAI(c);
+  if(second()%6<3) carAI(cclomen);
+  else carAI(new cow(new v2(width/2, height), 0));
   if (keyPress[UP])c.speed+=0.01;
   if (keyPress[DOWN])c.speed-=0.01;
   if (keyPress[LEFT])c.wheelAngle-=0.01;
@@ -20,7 +22,8 @@ void render(){
     fill(0,128);
     rect(0,0,width,height);
   }
+  if(cclomen.pos.y<=c.pos.y)cclomen.draw();
   c.draw();
-  cclomen.draw();
+  if(cclomen.pos.y>c.pos.y)cclomen.draw();
   if(!smode)for(logger l : logs) l.draw();
 }
