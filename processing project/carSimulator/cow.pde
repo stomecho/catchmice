@@ -61,9 +61,9 @@ class cow{
     return sub(pos,l);
   }
   void draw(){
-    if(smode) image(texture[(int)((cowAngle)/( TWO_PI/36)+36+45)%36],pos.x,pos.y*0.5);
+    if(smode) image(texture[(int)((cowAngle)/( TWO_PI/36)+36-9)%36],pos.x,pos.y*0.5);
     else {
-      image(texture[(int)((cowAngle)/( TWO_PI/36)+36+45)%36],pos.x,pos.y*0.5);
+      image(texture[(int)((cowAngle)/( TWO_PI/36)+36-9)%36],pos.x,pos.y*0.5);
       noStroke();
       fill(0,128);
       rect(0,0,width,height);
