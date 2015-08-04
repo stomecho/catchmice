@@ -3,10 +3,10 @@ void update(){
   if (keyPress[DOWN])c.speed-=0.01;
   if (keyPress[LEFT])c.wheelAngle-=0.01;
   if (keyPress[RIGHT])c.wheelAngle+=0.01;
-    if (keyPress[])cclomen.speed+=0.01;
-  if (keyPress[])cclomen.speed-=0.01;
-  if (keyPress[])cclomen.wheelAngle-=0.01;
-  if (keyPress[])cclomen.wheelAngle+=0.01;
+    if (keyPress[87])cclomen.speed-=0.01;
+  if (keyPress[83])cclomen.speed+=0.01;
+  if (keyPress[65])cclomen.wheelAngle-=0.01;
+  if (keyPress[68])cclomen.wheelAngle+=0.01;
   c.run();
   cclomen.run();
 }
