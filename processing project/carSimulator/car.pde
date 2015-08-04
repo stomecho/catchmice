@@ -8,7 +8,7 @@ class car{
   float nk;
   float len;
   float velHold;
-  PImage texture[] = new PImage[180];
+  PImage texture[] = new PImage[36];
   car(v2 pos,float angle){
     this.pos = pos;
     vel = new v2v(0,0);
@@ -22,7 +22,7 @@ class car{
     
   }
   void initTexture(){
-    for(int i=1;i<=180;i++) texture[i-1] = loadImage("\\carTexture\\super\\"+nf(i,4)+".png");
+    for(int i=1;i<=36;i++) texture[i-1] = loadImage("/carTexture/inSpace/"+nf(i,4)+".png");
   }
   void run(){
     carAngle += wheelAngle * vel.projection(carAngle).len * tk;
@@ -61,9 +61,9 @@ class car{
     return sub(pos,l);
   }
   void draw(){
-    if(smode) image(texture[(int)((carAngle)/( TWO_PI/180)+180+45)%180],pos.x,pos.y*0.5);
+    if(smode) image(texture[(int)((carAngle)/( TWO_PI/36)+36+9)%36],pos.x,pos.y*0.5);
     else {
-      image(texture[(int)((carAngle)/( TWO_PI/180)+180+45)%180],pos.x,pos.y*0.5);
+      image(texture[(int)((carAngle)/( TWO_PI/36)+36+9)%36],pos.x,pos.y*0.5);
       noStroke();
       fill(0,128);
       rect(0,0,width,height);
@@ -86,9 +86,9 @@ class car{
     
     
     if(smode) fill(0);
-    else fill(255);
+    else {fill(255);
     text(  "vel = "+nf(vel.len,2,2)+" \nspeed = "+nf(speed,2,2)          
-    ,pos.x+((pos.x<width-200)?30:-120),pos.y*0.5-40);
+    ,pos.x+((pos.x<width-200)?30:-120),pos.y*0.5-40);}
     
   }
 }

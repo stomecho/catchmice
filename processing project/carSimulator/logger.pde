@@ -29,9 +29,9 @@ class logger{
     inPoint = (inPoint+w-1)%w;
   }
   void draw(){
-    fill(255,64);stroke(0,64);strokeWeight(2);
+    fill(255,64);stroke(255,128);strokeWeight(1);
     rect(x,y,w,-h);
-    fill(0); stroke(#12E3FC); strokeWeight(1);
+    fill(255); stroke(#12E3FC,192); strokeWeight(1);
     text(name+" "+nf(multi,1,2)+"X\nvalue= "+nf(data[(inPoint+1)%w],2,2),x,y+16);
     for(int i=0;i<w;i++){
       float f = data[(inPoint+1+i)%w] * multi;
