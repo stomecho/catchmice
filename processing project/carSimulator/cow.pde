@@ -2,18 +2,18 @@ class cow{
   v2 pos;
   v2v vel;
   float wheelAngle;
-  float carAngle;
+  float cowAngle;
   float speed;
   float tk;
   float nk;
   float len;
   float velHold;
-  PImage texture[] = new PImage[180];
+  PImage texture[] = new PImage[36];
   cow(v2 pos,float angle){
     this.pos = pos;
     vel = new v2v(0,0);
     wheelAngle = radians(45);
-    carAngle = angle;
+    cowAngle = angle;
     speed = 0.1;
     tk = 0.045;
     nk = 0.5;
@@ -22,15 +22,15 @@ class cow{
     
   }
   void initTexture(){
-    for(int i=1;i<=180;i++) texture[i-1] = loadImage("\\carTexture\\super\\"+nf(i,4)+".png");
+    for(int i=1;i<=36;i++) texture[i-1] = loadImage("\\cowTexture\\"+nf(i,4)+".png");
   }
   void run(){
-    carAngle += wheelAngle * vel.projection(carAngle).len * tk;
-    carAngle=(carAngle+TWO_PI)%TWO_PI;
+    cowAngle += wheelAngle * vel.projection(cowAngle).len * tk;
+    cowAngle=(cowAngle+TWO_PI)%TWO_PI;
     wheelAngle*=0.98;
-    vel = add(vel,new v2v(carAngle,speed));
-    if(vel.len<velHold)vel = sub(vel,mult(vel.projection(carAngle+HALF_PI),nk));
-    else vel = add(vel,mult(vel.projection(carAngle+HALF_PI),nk*0.005));
+    vel = add(vel,new v2v(cowAngle,speed));
+    if(vel.len<velHold)vel = sub(vel,mult(vel.projection(cowAngle+HALF_PI),nk));
+    else vel = add(vel,mult(vel.projection(cowAngle+HALF_PI),nk*0.005));
     pos = add(pos,vel);
     speed*=0.99;
     vel.len*=0.9;
@@ -53,17 +53,17 @@ class cow{
     }
   }
   v2 head(){
-    v2v l = new v2v(carAngle,len*0.5);
+    v2v l = new v2v(cowAngle,len*0.5);
     return add(pos,l);
   }
   v2 bottom(){
-    v2v l = new v2v(carAngle,len*0.5);
+    v2v l = new v2v(cowAngle,len*0.5);
     return sub(pos,l);
   }
   void draw(){
-    if(smode) image(texture[(int)((carAngle)/( TWO_PI/180)+180+45)%180],pos.x,pos.y*0.5);
+    if(smode) image(texture[(int)((cowAngle)/( TWO_PI/36)+36+45)%36],pos.x,pos.y*0.5);
     else {
-      image(texture[(int)((carAngle)/( TWO_PI/180)+180+45)%180],pos.x,pos.y*0.5);
+      image(texture[(int)((cowAngle)/( TWO_PI/36)+36+45)%36],pos.x,pos.y*0.5);
       noStroke();
       fill(0,128);
       rect(0,0,width,height);
@@ -71,14 +71,14 @@ class cow{
       else fill(128,128);
       strokeWeight(2);stroke(255);
       line(head(),bottom());
-      line(head(),add(head(),new v2v(carAngle+wheelAngle*2,50)));
+      line(head(),add(head(),new v2v(cowAngle+wheelAngle*2,50)));
       ellipse(bottom(),20,20);
       ellipse(head(),50,50);
       
       strokeWeight(10);stroke(0,255,0,200);
-      line(pos,add(pos,mult(vel.projection(carAngle),10)));
+      line(pos,add(pos,mult(vel.projection(cowAngle),10)));
       strokeWeight(10);stroke(0,255,0,200);
-      line(pos,add(pos,mult(vel.projection(carAngle+HALF_PI),10)));
+      line(pos,add(pos,mult(vel.projection(cowAngle+HALF_PI),10)));
       
     }
     
