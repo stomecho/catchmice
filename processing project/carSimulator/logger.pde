@@ -5,9 +5,7 @@ class logger{
   int inPoint;
   float multi = 1;
   float ava = 0;
-  float sum = 0;
   float max = 0;
-  float amount = 0;
   logger(int x,int y,int w,int h,String name){
     this.x=x; this.y=y; this.w=w; this.h=h;
     this.name = name;
@@ -17,10 +15,9 @@ class logger{
   }
   void addlog(float d){
     
-    amount++;
-    sum+=d;
-    ava=sum/amount;
-    max += (ava-max) *0.01;
+    ava=(ava*w*10+d)/(w*10+1);
+    max += (ava-max) *0.001;
+    if(max>ava*10)max+= (ava-max) *0.1;
     if(d>max) max = d;
     if(max*multi<h*0.5 && multi<64 )multi*=2;
     else if(max*multi>h)multi*=0.5;
@@ -35,9 +32,9 @@ class logger{
     text(name+" "+nf(multi,1,2)+"X\nvalue= "+nf(data[(inPoint+1)%w],2,2),x,y+16);
     for(int i=0;i<w;i++){
       float f = data[(inPoint+1+i)%w] ;
-      if(f>ava) stroke(#FFB031,192);
+      if(f<=ava) stroke(#12E3FC,192);
       else if(f>max) stroke(#FF4231,192);
-      else stroke(#12E3FC,192);
+      else stroke(#FFB031,192);
       line(x+i,y,x+i,y-f* multi);
     }
     stroke(256,128);strokeWeight(4);

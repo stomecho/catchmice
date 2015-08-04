@@ -24,13 +24,15 @@ void setup() {
   cclomen.initTexture();
   background = loadImage("map1.png");
   imageMode(CENTER);
-  pmillis = millis();
   
   logs[0] = new logger(20,100,150,80,"FPS");
   logs[1] = new logger(20,230,150,80,"delta time");
   logs[2] = new logger(20,360,150,80,"car speed");
   logs[3] = new logger(20,490,150,80,"car velocity");
   logs[4] = new logger(20,630,200,100,"frame Time");
+  
+  pmillis = millis();
+  frameTime=millis();
 }
 
 void draw(){
