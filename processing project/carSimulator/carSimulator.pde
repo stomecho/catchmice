@@ -1,4 +1,5 @@
 car c = new car(new v2(100, 100), 0);
+cow cclomen = new cow(new v2(900, 900), 0);
 boolean smode = true;
 PImage background;
 
@@ -18,6 +19,7 @@ void setup() {
   frame.setResizable(true);
   ctrlInit();
   c.initTexture();
+  cclomen.initTexture();
   background = loadImage("map1.png");
   imageMode(CENTER);
   pmillis = millis();
