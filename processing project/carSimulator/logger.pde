@@ -20,7 +20,7 @@ class logger{
     amount++;
     sum+=d;
     ava=sum/amount;
-    max += (ava-max) *0.001;
+    max += (ava-max) *0.01;
     if(d>max) max = d;
     if(max*multi<h*0.5 && multi<64 )multi*=2;
     else if(max*multi>h)multi*=0.5;
@@ -29,16 +29,22 @@ class logger{
     inPoint = (inPoint+w-1)%w;
   }
   void draw(){
-    fill(255,64);stroke(255,128);strokeWeight(1);
+    fill(255,64);stroke(#12E3FC,128);strokeWeight(1);
     rect(x,y,w,-h);
-    fill(255); stroke(#12E3FC,192); strokeWeight(1);
+    fill(255); strokeWeight(1);
     text(name+" "+nf(multi,1,2)+"X\nvalue= "+nf(data[(inPoint+1)%w],2,2),x,y+16);
     for(int i=0;i<w;i++){
-      float f = data[(inPoint+1+i)%w] * multi;
-      line(x+i,y,x+i,y-f);
+      float f = data[(inPoint+1+i)%w] ;
+      if(f>ava) stroke(#FFB031,192);
+      else if(f>max) stroke(#FF4231,192);
+      else stroke(#12E3FC,192);
+      line(x+i,y,x+i,y-f* multi);
     }
-    stroke(100,255,100);strokeWeight(2);
+    stroke(256,128);strokeWeight(4);
     line(x,y-ava*multi,x+w,y-ava*multi);
-    stroke(255,0,0); line(x,y-max*multi,x+w,y-max*multi);
+    line(x,y-max*multi,x+w,y-max*multi);
+    stroke(0,255,0,192);strokeWeight(2);
+    line(x,y-ava*multi,x+w,y-ava*multi);
+    stroke(255,0,0,192); line(x,y-max*multi,x+w,y-max*multi);
   }
 }
