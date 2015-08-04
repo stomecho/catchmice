@@ -16,7 +16,7 @@ class cow{
     cowAngle = angle;
     speed = 0.1;
     tk = 0.045;
-    nk = 0.5;
+    nk = 0.2;
     len = 100;
     velHold=5;
     
@@ -66,7 +66,6 @@ class cow{
       image(texture[(int)((cowAngle)/( TWO_PI/36)+36-9)%36],pos.x,pos.y*0.5);
       noStroke();
       fill(0,128);
-      rect(0,0,width,height);
       if(vel.len>velHold)fill(255,0,0,64);
       else fill(128,128);
       strokeWeight(2);stroke(255);
@@ -80,15 +79,9 @@ class cow{
       strokeWeight(10);stroke(0,255,0,200);
       line(pos,add(pos,mult(vel.projection(cowAngle+HALF_PI),10)));
       
+      fill(255,128); stroke(0,255,0); strokeWeight(1);
+      ellipse(pos,100,100);
     }
-    
-    
-    
-    
-    if(smode) fill(0);
-    else fill(255);
-    text(  "vel = "+nf(vel.len,2,2)+" \nspeed = "+nf(speed,2,2)          
-    ,pos.x+((pos.x<width-200)?30:-120),pos.y*0.5-40);
     
   }
 }

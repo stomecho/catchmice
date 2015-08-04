@@ -33,6 +33,7 @@ void setup() {
   
   pmillis = millis();
   frameTime=millis();
+  
 }
 
 void draw(){
