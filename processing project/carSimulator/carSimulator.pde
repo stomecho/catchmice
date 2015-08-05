@@ -16,20 +16,20 @@ int frameTime = 0;
 logger logs[] = new logger[5];
 
 void setup() {
-  frameRate(128);
+  frameRate(100);
   size(500, 500);
   frame.setResizable(true);
   ctrlInit();
   c.initTexture();
   cclomen.initTexture();
-  background = loadImage("map1.png");
+  background = loadImage("map2.jpg");
   imageMode(CENTER);
   
-  logs[0] = new logger(20,100,150,80,"FPS");
-  logs[1] = new logger(20,230,150,80,"delta time");
+  logs[0] = new logger(20,100,150,80,"FPS",60);
+  logs[1] = new logger(20,230,150,80,"delta time",1000/60);
   logs[2] = new logger(20,360,150,80,"car speed");
   logs[3] = new logger(20,490,150,80,"car velocity");
-  logs[4] = new logger(20,630,200,100,"frame Time");
+  logs[4] = new logger(20,630,200,100,"frame Time",1000/fps);
   
   pmillis = millis();
   frameTime=millis();
