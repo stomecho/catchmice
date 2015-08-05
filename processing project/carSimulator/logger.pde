@@ -66,6 +66,7 @@ class logger{
     
     
     fill(255,64);stroke(#12E3FC,128);strokeWeight(1);
+    if(pressOn) fill(255,128);
     rect(x,y,w,-h);
     fill(255); strokeWeight(1);
     text(name+" "+nf(multi,1,2)+"X\nvalue= "+nf(data[(inPoint+1)%w],2,2),x,y+16);
