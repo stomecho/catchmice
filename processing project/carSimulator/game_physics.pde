@@ -28,4 +28,8 @@ void render(){
   c.draw();
   if(cclomen.pos.y>c.pos.y)cclomen.draw();
   if(!smode)for(logger l : logs) l.draw();
+  if(hit){
+    smash.play();
+    hit=false;
+  }
 }

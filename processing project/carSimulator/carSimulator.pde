@@ -1,3 +1,4 @@
+import processing.sound.*;
 car c = new car(new v2(100, 100), 0);
 cow cclomen = new cow(new v2(900, 900), 0);
 boolean smode = true;
@@ -13,6 +14,8 @@ int updateCount = 0;
 boolean dropFrame = false;
 int frameTime = 0;
 
+boolean hit=false;
+SoundFile smash;
 
 logger logs[] = new logger[6];
 
@@ -35,6 +38,7 @@ void setup() {
   
   pmillis = millis();
   frameTime=millis();
+  smash = new SoundFile(this, "sound/hit.wav");
   
 }
 
