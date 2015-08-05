@@ -7,6 +7,10 @@ class logger{
   float ava = 0;
   float max = 0;
   float great;
+  boolean press=false;
+  boolean pressOn=false;
+  int mpx=0;
+  int mpy=0;
   logger(int x,int y,int w,int h,String name){
     this.x=x; this.y=y; this.w=w; this.h=h;
     this.name = name;
@@ -36,13 +40,41 @@ class logger{
     inPoint = (inPoint+w-1)%w;
   }
   void draw(){
+    if(mousePressed){
+      if(press){
+        if(pressOn){
+          x=mouseX-mpx;
+          y=mouseY-mpy;
+          for(logger l : logs){
+            if(abs(x-l.x)<15) {x=l.x; stroke(0,255,0,64); strokeWeight(1); line(x,y,x,l.y);}
+            if(abs(y-l.y)<15) {y=l.y; stroke(0,255,0,64); strokeWeight(1); line(x,y,l.x,y);}
+          }
+        }
+      }else{
+        if(x<mouseX&&mouseX<x+w&&y-h<mouseY&&mouseY<y){
+          mpx = mouseX-x; mpy = mouseY-y;
+          pressOn = true;
+        }
+      }
+      press = true;
+    }else{
+      pressOn = false;
+      press = false;
+    }
+    
+    
+    
+    
     fill(255,64);stroke(#12E3FC,128);strokeWeight(1);
     rect(x,y,w,-h);
     fill(255); strokeWeight(1);
     text(name+" "+nf(multi,1,2)+"X\nvalue= "+nf(data[(inPoint+1)%w],2,2),x,y+16);
+    fill(255,0,0); text(nf(max,1,1),x+w+5,y-max*multi+5);
+    fill(0,255,0); text(nf(ava,1,1),x+w+5,y-ava*multi+5);
+    
     for(int i=0;i<w;i++){
       float f = data[(inPoint+1+i)%w] ;
-      if(abs(f-great)<max*0.08) stroke(#5AF03A,192);
+      if(abs(f-great)<max*0.1) stroke(#5AF03A,192);
       else if(f<=ava) stroke(#12E3FC,192);
       else if(f>max) stroke(#FF4231,192);
       else stroke(#FFB031,192);
@@ -54,7 +86,7 @@ class logger{
     line(x,y-max*multi,x+w,y-max*multi);
     
     if(great!=-1){
-      stroke(255,128);strokeWeight(max*0.08*multi);
+      stroke(255,128);strokeWeight(max*0.1*multi);
       line(x,y-great*multi,x+w,y-great*multi);
     }
     stroke(0,255,0,128);strokeWeight(2);

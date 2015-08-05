@@ -6,14 +6,15 @@ void cowAI(car t){
     if(d.projection(cclomen.cowAngle+HALF_PI).len>0) cclomen.wheelAngle+=0.01;
     else cclomen.wheelAngle-=0.01;
   }
+  else{
+    cclomen.speed-=0.01;
+  }
 }
 
 void carAI(cow t){
   v2v d = add( sub(t.pos,c.pos).toV2v() , sub(t.pos,c.pos));
-  if(d.len>200){
-    if(d.projection(c.carAngle).len>=-500) c.speed+=0.02;
-    else c.speed-=0.02;
-    if(d.projection(c.carAngle+c.wheelAngle*c.tk+HALF_PI).len>0) c.wheelAngle+=0.006;
-    else c.wheelAngle-=0.006;
-  }
+  if(d.projection(c.carAngle).len>=-500) c.speed+=0.02;
+  else c.speed-=0.02;
+  if(d.projection(c.carAngle+c.wheelAngle*c.tk+HALF_PI).len>0) c.wheelAngle+=0.006;
+  else c.wheelAngle-=0.006;
 }

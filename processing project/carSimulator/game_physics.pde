@@ -17,7 +17,8 @@ void update(){
 
 void render(){
   //background(64);
-  image(background,width/2,height/2);
+  if(fastMode) background(32);
+  else image(background,width/2,height/2,width*1.5,height*1.5);
   if(!smode){
     noStroke();
     fill(0,128);
