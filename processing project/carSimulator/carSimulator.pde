@@ -15,6 +15,7 @@ boolean dropFrame = false;
 int frameTime = 0;
 
 boolean hit=false;
+float hamp=0;
 SoundFile smash;
 
 logger logs[] = new logger[4];

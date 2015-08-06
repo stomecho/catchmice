@@ -32,6 +32,7 @@ void render(){
   if(!smode)for(logger l : logs) l.draw();
   if(hit){
     smash.play();
+    smash.amp(hamp);
     hit=false;
   }
 }
