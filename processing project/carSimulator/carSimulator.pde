@@ -6,7 +6,7 @@ boolean fastMode = false;
 PImage background;
 
 int fps = 60;
-float rfps = 0;
+float renderDeltaTime = 0;
 int pmillis = 0;
 float deltaTime = 0;
 int maxMultiframe = 10;
@@ -17,55 +17,56 @@ int frameTime = 0;
 boolean hit=false;
 SoundFile smash;
 
-logger logs[] = new logger[6];
+logger logs[] = new logger[4];
 
 void setup() {
-  frameRate(200);
-  size(500, 500);
+  frameRate(360);
+  size(1024, 768);
   frame.setResizable(true);
   ctrlInit();
   c.initTexture();
   cclomen.initTexture();
   background = loadImage("map2.jpg");
   imageMode(CENTER);
-  
-  logs[0] = new logger(20,100,150,80,"FPS",60);
-  logs[1] = new logger(20,230,150,80,"delta time",1000/60);
-  logs[2] = new logger(20,360,150,80,"car speed");
-  logs[3] = new logger(20,490,150,80,"car velocity");
-  logs[4] = new logger(20,630,200,100,"frame Time",1000/fps);
-  logs[5] = new logger(20,750,200,50,"multi frame count",1);
-  
+
+
+  logs[0] = new logger(20, 100, 150, 80, "game FPS", fps);
+  logs[1] = new logger(20, 230, 150, 80, "draw FPS", fps);
+  logs[2] = new logger(20, 360, 150, 80, "real FPS", fps);
+  logs[3] = new logger(20, 490, 150, 80, "multi frame count", 1);
+
   pmillis = millis();
   frameTime=millis();
-  smash = new SoundFile(this, "sound/hit.wav");
-  
+  smash = new SoundFile(this, "sound/hit.mp3");
 }
 
-void draw(){
-  
+void draw() {
+
   deltaTime+=millis()-pmillis;
   pmillis=millis();
-  
-  if(deltaTime>maxMultiframe*1000/fps) deltaTime = maxMultiframe*1000/fps;
-  for(;deltaTime>=1000/fps;deltaTime-=1000/fps) {update(); updateCount++; }
-  
-  
-  logs[1].addlog(deltaTime);
-  logs[2].addlog(abs(c.speed));
-  logs[3].addlog(c.vel.len);
-  
-  if(0<updateCount&&updateCount<maxMultiframe*2) {
-    logs[4].addlog((millis()-frameTime)/updateCount);
-    rfps = updateCount*1000/(millis()-frameTime);
-    frameTime=millis();
-    logs[5].addlog(updateCount);
-    render(); updateCount = 0; dropFrame = false; 
-  }else{
-    dropFrame = true;
-    logs[4].addlog(0);
-    logs[5].addlog(0);
+  float dT = deltaTime; //<>//
+
+  if (deltaTime>maxMultiframe*1000/fps) deltaTime = maxMultiframe*1000/fps;
+  while (deltaTime>=1000/fps) {
+    update(); 
+    updateCount++; 
+    deltaTime-=1000/fps;
   }
-  logs[0].addlog(rfps);
-  
+  float uC = updateCount;
+
+
+  if (deltaTime<=1000/fps&&0<updateCount&&updateCount<maxMultiframe*2) {
+    renderDeltaTime = millis()-frameTime;
+    frameTime=millis();
+    render(); 
+    updateCount = 0; 
+    dropFrame = false;
+  } else {
+    dropFrame = true;
+  }
+
+  logs[0].addlog(uC*1000/dT);
+  logs[1].addlog(uC*1000/renderDeltaTime);
+  logs[2].addlog(1000/renderDeltaTime);
+  logs[3].addlog(uC);
 }

@@ -1,7 +1,9 @@
 void update(){ 
   cowAI(c);
+  /*
   if(second()%12<6) carAI(cclomen);
   else carAI(new cow(new v2(width/2,height), 0));
+  */
   if (keyPress[UP])c.speed+=0.01;
   if (keyPress[DOWN])c.speed-=0.01;
   if (keyPress[LEFT])c.wheelAngle-=0.01;

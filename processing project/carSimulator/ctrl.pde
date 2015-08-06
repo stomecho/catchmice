@@ -4,6 +4,7 @@ void ctrlInit(){
 }
 void keyPressed(){
   if(keyCode==('p'-32)) smode = !smode;
+  if(keyCode==('o'-32)) fastMode = !fastMode;
   keyPress[keyCode] = true;
 }
 void keyReleased(){

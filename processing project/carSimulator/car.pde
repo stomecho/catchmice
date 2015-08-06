@@ -61,10 +61,13 @@ class car{
     return sub(pos,l);
   }
   void draw(){
-    
-    if(smode) image(texture[(int)((carAngle)/( TWO_PI/36)+36+9)%36],pos.x,pos.y*0.5);
+    if(fastMode){
+      fill(#FFE812); stroke(255); strokeWeight(1);
+      rect(pos.x-50,pos.y*0.5-25,100,50);
+    }
+    else image(texture[(int)((carAngle)/( TWO_PI/36)+36+9)%36],pos.x,pos.y*0.5);
+    if(smode) ;
     else {
-      image(texture[(int)((carAngle)/( TWO_PI/36)+36+9)%36],pos.x,pos.y*0.5);
       if(vel.len>velHold)fill(255,0,0,64);
       else fill(128,128);
       strokeWeight(2);stroke(255);

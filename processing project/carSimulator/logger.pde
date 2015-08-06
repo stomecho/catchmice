@@ -29,7 +29,7 @@ class logger{
   }
   void addlog(float d){
     
-    ava=(ava*w*10+d)/(w*10+1);
+    ava=(ava*w+d)/(w+1);
     max += (ava-max) *0.001;
     if(max>ava*10)max+= (ava-max) *0.1;
     if(d>max) max = d;
