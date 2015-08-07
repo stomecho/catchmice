@@ -16,6 +16,7 @@ void MapSetup(int mw,int mh){
      if(i==0)sd=1;
      if(i==mh-1)sd=1;
      if(j==mw)sd=1;
+     if(j==mw-1)sd=1;
      map[j][i]=sd;
   }
 }
