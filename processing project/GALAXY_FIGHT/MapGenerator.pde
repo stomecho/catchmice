@@ -1,7 +1,7 @@
 void MapSetup(int mw,int mh){
   int sd=0;
   for(int i=0;i<mh;i++)
-    for(int j=0;j<mw;j++){
+    for(int j=0;j<mw+1;j++){
      if(i<mh/3){
        sd=int(random(0,1.1));
        if(sd==1)sd=int(random(0,1.1));
@@ -14,8 +14,8 @@ void MapSetup(int mw,int mh){
        sd=int(random(0,1.7));
      if(j==0)sd=1;
      if(i==0)sd=1;
-     if(j==mh-1)sd=1;
-     if(i==mw-1)sd=1;
+     if(i==mh-1)sd=1;
+     if(j==mw)sd=1;
      map[j][i]=sd;
   }
 }
