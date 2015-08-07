@@ -1,5 +1,5 @@
 shadeCube[] sc = new shadeCube[500];
-int a=10;
+int a=100;
 int t=0;
 boolean fastMode = false;
 
@@ -10,14 +10,13 @@ void setup() {
   shade_init();
   frame.setResizable(true);
   for(int i=0;i<a;i++)sc[i] = new shadeCube(0,0,0,0);
-  for(int i=0;i<a;i++)sc[i].setAnimation(20+i*10,20,20+i*5,20+i*5,600,500);
+  for(int i=0;i<a;i++)sc[i].setAnimation(20+i*2,20,20+i*2,20+i*2,600,500);
 }
 
 void keyPressed(){
-  /*fastMode = !fastMode;
+  fastMode = !fastMode;
   if(fastMode) noSmooth();
-  else smooth();*/
-  for(int i=0;i<a;i++)sc[i].setAnimation(t+i*2,100,20+140*i,height-60,120,30);
+  else smooth();
 }
 
 void draw() {

@@ -31,15 +31,14 @@ class shadeCube{
   void cheak(){
     if(!got&&abs(mouseX-x-w*0.5)<w*0.5&&abs(mouseY-y-h*0.5)<h*0.5){got=true; over=true;}
     else over = false;
-    if(press) got = true;
   }
   void setAnimation(int st,int dt,int x,int y,int w,int h){
     this.st=st;
     this.dt=dt;
-    ox=x; tx=x;
-    oy=y; ty=y;
-    ow=w; tw=w;
-    oh=h; th=h;
+    ox=tx; tx=x;
+    oy=ty; ty=y;
+    ow=tw; tw=w;
+    oh=th; th=h;
     pg = createGraphics(w,h);
   }
   void animation(int t){
@@ -51,26 +50,6 @@ class shadeCube{
     }
   }
   void draw(){    
-    if(over) {
-      if(mousePressed) {
-        if(!press){
-          dmx = mouseX-x;
-          dmy = mouseY-y;
-        }
-        stroke(#2CFF4D);
-        press = true;
-      }
-      else stroke(#81E5FF);
-    }
-    if(mousePressed){
-      if(press){
-        x = mouseX-dmx;
-        y = mouseY-dmy;
-      }
-    }else{
-      press = false;
-    }
-    rect(x,y,w,h);
     if(w>0&&h>0){
       
       if(fastMode){
@@ -89,9 +68,27 @@ class shadeCube{
       
       noStroke();
       fill(250);strokeWeight(5);
-      
-      
-      //image(pg,x,y,w,h);
+      if(over) {
+        if(mousePressed) {
+          if(!press){
+            dmx = mouseX-x;
+            dmy = mouseY-y;
+          }
+          stroke(#2CFF4D);
+          press = true;
+        }
+        else stroke(#81E5FF);
+      }
+      if(mousePressed){
+        if(press){
+          x = mouseX-dmx;
+          y = mouseY-dmy;
+        }
+      }else{
+        press = false;
+      }
+      rect(x,y,w,h);
+      image(pg,x,y,w,h);
     }
     
   }
