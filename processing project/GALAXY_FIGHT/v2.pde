@@ -28,9 +28,17 @@ v2 max(v2 a,v2 b){
 }
 
 float range(float min,float max,float x){
-  return min(min,max(max,x));
+  return min(max,max(min,x));
 }
 
 v2 range(v2 min,v2 max,v2 x){
-  return min(min,max(max,x));
+  return min(max,max(min,x));
+}
+
+void println(v2 p){
+  println(p.x,p.y);
+}
+
+void rect(v2 p,v2 s){
+  rect(p.x,p.y,s.x,s.y);
 }
