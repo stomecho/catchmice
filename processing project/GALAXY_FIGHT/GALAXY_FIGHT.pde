@@ -21,7 +21,8 @@ void setup(){
   frameRate(240);
   size(500,500);
   frame.setResizable(true);
-  for(int i=0;i<mw;i++)for(int j=0;j<mh;j++)map[i][j] = (int)(random(5)/3);
+  
+  MapSetup(mw,mh);
   c.offset = new v2(0,0);
   
   logs[0] = new logger(20, 100, 150, 80, "game FPS", fps);
