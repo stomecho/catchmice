@@ -1,6 +1,6 @@
-int tu(float x,float y){
-   int x1=int(x),y1=int(y),fly=int(y)-3,r=1;
-     if(x+0.8>x1+1)r=2;
+int tu(v2 pa){
+   int x1=int(pa.x),y1=int(pa.y),fly=int(pa.y)-3,r=1;
+     if(pa.x+0.8>x1+1)r=2;
        for(int i=0;i<r;i++)  
         for(int j=0;j<3;j++)
       if(map[x1+i][y1-j]==1){
@@ -8,9 +8,9 @@ int tu(float x,float y){
   }
   return fly;
 }
-int td(float x,float y){
-  int x1=int(x),y1=int(y),fly=int(y)+6,r=1;
-   if(x+0.8>x1+1)r=2;
+int td(v2 pa){
+  int x1=int(pa.x),y1=int(pa.y),fly=int(pa.y)+6,r=1;
+   if(pa.x+0.8>x1+1)r=2;
     for(int i=0;i<r;i++)  
       for(int j=0;j<6;j++)
     if(map[x1+i][y1+j]==1){
@@ -18,9 +18,9 @@ int td(float x,float y){
   }
   return fly;
 }
-int tl(float x,float y){
-  int x1=int(x),y1=int(y),flx=int(x)-3,r=1;
-   if(y+0.8>y1+1)r=2;
+int tl(v2 pa){
+  int x1=int(pa.x),y1=int(pa.y),flx=int(pa.x)-3,r=1;
+   if(pa.y+0.8>y1+1)r=2;
      for(int i=0;i<3;i++)  
        for(int j=0;j<r;j++)
       if(map[x1-i][y1+j]==1){
@@ -28,9 +28,9 @@ int tl(float x,float y){
   }
   return flx;
 }
-int tr(float x,float y){
-    int x1=int(x),y1=int(y),flx=int(x)+3,r=1;
-     if(y+0.8>y1+1)r=2;
+int tr(v2 pa){
+    int x1=int(pa.x),y1=int(pa.y),flx=int(pa.x)+3,r=1;
+     if(pa.y+0.8>y1+1)r=2;
       for(int i=0;i<3;i++)  
         for(int j=0;j<r;j++)
       if(map[x1+i][y1+j]==1){
