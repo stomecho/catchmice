@@ -6,7 +6,7 @@ int tu(v2 pa){
       if(map[x1+i][y1-j]==1){
     if(fly<y1-j)fly=y1-j;
   }
-  return fly-1;
+  return fly+1;
 }
 int td(v2 pa){
   int x1=int(pa.x),y1=int(pa.y),fly=int(pa.y)+7,r=1;
@@ -26,7 +26,7 @@ int tl(v2 pa){
       if(map[x1-i][y1+j]==1){
     if(flx<x1-i)flx=x1-i;
   }
-  return flx-1;
+  return flx+1;
 }
 int tr(v2 pa){
     int x1=int(pa.x),y1=int(pa.y),flx=int(pa.x)+3,r=1;
