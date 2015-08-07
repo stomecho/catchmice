@@ -1,6 +1,6 @@
 int[][] map = new int[500][500];
-int mw = 20;
-int mh = 20;
+int mw = 100;
+int mh = 100;
 player p1 = new player();
 player p2 = new player();
 
