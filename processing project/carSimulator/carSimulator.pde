@@ -45,7 +45,7 @@ void draw() {
 
   deltaTime+=millis()-pmillis;
   pmillis=millis();
-  float dT = deltaTime; //<>//
+  float dT = deltaTime;
 
   if (deltaTime>maxMultiframe*1000/fps) deltaTime = maxMultiframe*1000/fps;
   while (deltaTime>=1000/fps) {

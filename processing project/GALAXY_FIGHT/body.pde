@@ -1,5 +1,8 @@
-float dx=0;
-float dy=0;
+v2 pd = new v2(0,0);
+void phy(){
+  pd = sub(p1.pos,p2.pos);
+}
+
 
 class player {
   v2 pos;
@@ -18,31 +21,7 @@ class player {
     pos = add(pos, new v2(vel.x,0));
     if(vel.x<0&&map[(int)(pos.x)][(int)(pos.y)]!=0||map[(int)(pos.x)][(int)(pos.y+0.8)]!=0){pos.x=floor(pos.x+1)+0.001; vel.x*=-0.2;}
     if(vel.x>0&&map[(int)(pos.x+0.8)][(int)(pos.y)]!=0||map[(int)(pos.x+0.8)][(int)(pos.y+0.8)]!=0){pos.x=floor(pos.x)+0.199; vel.x*=-0.2;}
-    /*
-    pos = add(pos, vel);
-    if(map[(int)(pos.x+0.4)][(int)(pos.y+0.4)]==0){
-      if (pos.y>td(pos)-0.8) {
-        pos.y=td(pos)-0.8;
-        vel.y*=-0.2;
-      }
-      if (pos.x<tl(pos)) {
-        pos.x=tl(pos)+0.01;
-        vel.x*=-0.2;
-      }
-      if (pos.y<tu(pos)) {
-        pos.y=tu(pos)+0.01;
-        vel.y*=-0.2;
-      }
-      if (pos.x>tr(pos)-0.8) {
-        pos.x=tr(pos)-0.8;
-        vel.x*=-0.2;
-      }
-    }else{
-      vel.y=-0.03;
-    }
-    */
-    vel = mult(vel,0.98);
+    vel = mult(vel,0.95);
   }
-  
 }
 

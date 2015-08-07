@@ -22,10 +22,10 @@ class cam{
   void upd(){
     tpos = mult(add(p1.pos,p2.pos),0.5);
     pos = add(pos,mult(sub(tpos,pos),k));
-    if((float)dx/dy>=(float)dispW/dispH){
-      ts = dispW*view/dx;
+    if((float)abs(pd.x/pd.y)>=(float)dispW/dispH){
+      ts = abs(dispW*view/pd.x);
     }else{
-      ts = dispH*view/dy;
+      ts = abs(dispH*view/pd.y);
     }
     if(ts>max)ts=max;
     s += (ts-s)*k;
@@ -46,10 +46,10 @@ class cam{
     return s*x;
   }
   void draw(){
+    
     display=createGraphics((int)dispW,(int)dispH);
     display.beginDraw();
-    display.strokeWeight(1);
-    display.stroke(0);
+    display.noStroke();
     v2 rsp = range(new v2(0,0),new v2(mw,mh),startPos());
     v2 rep = range(new v2(0,0),new v2(mw,mh),endPos());
     rep = add(rep,new v2(1,1));
@@ -63,6 +63,7 @@ class cam{
     }
     display.fill(0,255,0);
     rect(p1.pos,new v2(0.8,0.8));
+    rect(p2.pos,new v2(0.8,0.8));
     display.strokeWeight(10);
     display.stroke(0,128);
 //    line(add(p1.pos,new v2(0.4,0.4)),new v2(p1.pos.x+0.4,tu(p1.pos)));
@@ -71,7 +72,6 @@ class cam{
 //    line(add(p1.pos,new v2(0.4,0.4)),new v2(tr(p1.pos),p1.pos.y+0.4));
     display.endDraw();
     image(display,offset.x,offset.y);
-    
     
   }
   void rect(v2 p,v2 s){
