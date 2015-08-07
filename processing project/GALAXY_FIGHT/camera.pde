@@ -68,7 +68,7 @@ class cam{
     line(add(p1.pos,new v2(0.4,0.4)),new v2(p1.pos.x+0.4,tu(p1.pos)));
     line(add(p1.pos,new v2(0.4,0.4)),new v2(p1.pos.x+0.4,td(p1.pos)));
     line(add(p1.pos,new v2(0.4,0.4)),new v2(tl(p1.pos),p1.pos.y+0.4));
-    line(add(p1.pos,new v2(0.4,0.4)),new v2(tr(p1.pos),p1.pos.y+0.4));
+   // line(add(p1.pos,new v2(0.4,0.4)),new v2(tr(p1.pos),p1.pos.y+0.4));
     display.endDraw();
     image(display,offset.x,offset.y);
     
