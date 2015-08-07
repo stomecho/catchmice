@@ -9,6 +9,7 @@ void setup(){
   size(500,500);
   frame.setResizable(true);
   for(int i=0;i<mw;i++)for(int j=0;j<mh;j++)map[i][j] = (int)random(2);
+  MapSetup(mw,mh);
   c.offset = new v2(0,0);
 }
 
