@@ -11,5 +11,6 @@ void render(){
 //    
 //    rect(c.cp(new v2(i,j)),mult(new v2(1,1),c.cs(1)));
 //  }
+  c.upd();
   c.draw();
 }

@@ -7,7 +7,7 @@ class cam{
   float s;
   float ts;
   float k = 0.15;
-  float view = 0.6;
+  float view = 0.4;
   float max = 60;
   float dispW;
   float dispH;
@@ -17,7 +17,7 @@ class cam{
     pos = new v2(0,0);
     tpos = new v2(0,0);
     s = 20;
-    ts = 20;
+    ts = 10;
   }
   void upd(){
     tpos = mult(add(p1.pos,p2.pos),0.5);
@@ -48,19 +48,45 @@ class cam{
   void draw(){
     display=createGraphics((int)dispW,(int)dispH);
     display.beginDraw();
-    display.fill(255);
+    display.strokeWeight(1);
     display.stroke(0);
-    v2 rsp = range(new v2(0,0),new v2(mw,mh),c.startPos());
-    v2 rep = range(new v2(0,0),new v2(mw,mh),c.endPos());
+    v2 rsp = range(new v2(0,0),new v2(mw,mh),startPos());
+    v2 rep = range(new v2(0,0),new v2(mw,mh),endPos());
     rep = add(rep,new v2(1,1));
-    println(rsp.x,rsp.y,rep.x,rep.y);
     for(int i=(int)rsp.x;i<(int)rep.x;i++)
     for(int j=(int)rsp.y;j<(int)rep.y;j++){
-      v2 p = c.cp(new v2(i,j));
-      v2 s = mult(new v2(1,1),c.cs(1));
-      display.rect(p.x,p.y,s.x,s.y);
+      switch(map[i][j]){
+        case 1:display.fill(255);break;
+        default: display.fill(128);break;
+      }
+      rect(new v2(i,j),new v2(1,1));
     }
+    display.fill(0,255,0);
+    rect(p1.pos,new v2(0.8,0.8));
+    display.strokeWeight(10);
+    display.stroke(0,128);
+    line(add(p1.pos,new v2(0.4,0.4)),new v2(p1.pos.x+0.4,tu(p1.pos.x,p1.pos.y)));
+    line(add(p1.pos,new v2(0.4,0.4)),new v2(p1.pos.x+0.4,td(p1.pos.x,p1.pos.y)));
+    line(add(p1.pos,new v2(0.4,0.4)),new v2(tl(p1.pos.x,p1.pos.y),p1.pos.y+0.4));
+    line(add(p1.pos,new v2(0.4,0.4)),new v2(tr(p1.pos.x,p1.pos.y),p1.pos.y+0.4));
     display.endDraw();
     image(display,offset.x,offset.y);
+    
+    
+  }
+  void rect(v2 p,v2 s){
+    p = cp(p);
+    s = mult(s,cs(1));
+    display.rect(p.x,p.y,s.x,s.y);
+  }
+  void line(v2 a,v2 b){
+    a = cp(a);
+    b = cp(b);
+    display.line(a.x,a.y,b.x,b.y);
+  }
+  void ellipse(v2 p,v2 s){
+    p = cp(p);
+    s = mult(s,cs(1));
+    display.ellipse(p.x,p.y,s.x,s.y);
   }
 }
