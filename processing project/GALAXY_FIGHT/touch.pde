@@ -6,13 +6,13 @@ int tu(v2 pa){
       if(map[x1+i][y1-j]==1){
     if(fly<y1-j)fly=y1-j;
   }
-  return fly;
+  return fly-1;
 }
 int td(v2 pa){
-  int x1=int(pa.x),y1=int(pa.y),fly=int(pa.y)+6,r=1;
+  int x1=int(pa.x),y1=int(pa.y),fly=int(pa.y)+7,r=1;
    if(pa.x+0.8>x1+1)r=2;
     for(int i=0;i<r;i++)  
-      for(int j=0;j<6;j++)
+      for(int j=1;j<7;j++)
     if(map[x1+i][y1+j]==1){
    if(fly>y1+j)fly=y1+j;
   }
@@ -26,7 +26,7 @@ int tl(v2 pa){
       if(map[x1-i][y1+j]==1){
     if(flx<x1-i)flx=x1-i;
   }
-  return flx;
+  return flx-1;
 }
 int tr(v2 pa){
     int x1=int(pa.x),y1=int(pa.y),flx=int(pa.x)+3,r=1;
