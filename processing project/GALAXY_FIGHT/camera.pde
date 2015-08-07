@@ -63,6 +63,7 @@ class cam{
     }
     display.fill(0,255,0);
     rect(p1.pos,new v2(0.8,0.8));
+    display.fill(255,0,0);
     rect(p2.pos,new v2(0.8,0.8));
     display.strokeWeight(10);
     display.stroke(0,128);

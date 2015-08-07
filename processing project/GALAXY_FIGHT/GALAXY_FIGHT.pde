@@ -1,15 +1,17 @@
 int[][] map = new int[500][500];
-int mw = 100;
-int mh = 100;
+int mw = 20;
+int mh = 20;
 player p1 = new player();
 player p2 = new player();
 
+int multiSafe = 5;
+int tick = 0;
 
-int fps = 60;
+int fps = 120;
 float renderDeltaTime = 0;
 int pmillis = 0;
 float deltaTime = 0;
-int maxMultiframe = 10;
+int maxMultiframe = 2;
 int updateCount = 0;
 boolean dropFrame = false;
 int frameTime = 0;
@@ -40,9 +42,13 @@ void draw(){
   float dT = deltaTime;
   if (deltaTime>maxMultiframe*1000/fps) deltaTime = maxMultiframe*1000/fps;
   while (deltaTime>=1000/fps) {
-    update(); 
+    if(tick%multiSafe==0){
+      update(); 
+    }
+    safe();
     updateCount++; 
     deltaTime-=1000/fps;
+    tick++;
   }
   float uC = updateCount;
 
@@ -56,9 +62,10 @@ void draw(){
   } else {
     dropFrame = true;
   }
-  
+  /*
   logs[0].addlog(uC*1000/dT);
   logs[1].addlog(uC*1000/renderDeltaTime);
   logs[2].addlog(1000/renderDeltaTime);
-  logs[3].addlog(uC);
+  logs[3].addlog(uC);*/
+  
 }

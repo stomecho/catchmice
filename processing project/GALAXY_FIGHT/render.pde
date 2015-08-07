@@ -13,5 +13,5 @@ void render(){
 //  }
   background(0);
   c.draw();
-  for(logger l : logs) l.draw();
+  //for(logger l : logs) l.draw();
 }
