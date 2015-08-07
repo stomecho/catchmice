@@ -12,6 +12,10 @@ void MapSetup(int mw,int mh){
      }
      else if(i>mh/3+3)
        sd=int(random(0,1.7));
+     if(j==0)sd=1;
+     if(i==0)sd=1;
+     if(j==mh-1)sd=1;
+     if(i==mw-1)sd=1;
      map[j][i]=sd;
   }
 }
