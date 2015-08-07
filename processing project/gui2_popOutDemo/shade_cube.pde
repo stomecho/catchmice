@@ -16,7 +16,6 @@ class shadeCube{
   int w;
   int h;
   boolean over=false;
-  PImage pg;
   shadeCube(int x,int y,int w,int h){
     this.x=x;
     this.y=y;
@@ -28,7 +27,7 @@ class shadeCube{
     if(!got&&abs(mouseX-x-w*0.5)<w*0.5&&abs(mouseY-y-h*0.5)<h*0.5){got=true; over=true;}
     else over = false;
   }
-  void draw(){
+  void draw(float i){
     if(w>0&&h>0){
       
       if(fastMode){
@@ -53,6 +52,10 @@ class shadeCube{
       }
       rect(x,y,w,h);
       
+    }
+    if(w>100&&h>70){
+      fill(128);
+      text("NO."+nf(i*a,0,0)+"\nSYSTEM ALERT\nWINDOW HAS\nCREATED",x+10,y+20);
     }
     
   }
