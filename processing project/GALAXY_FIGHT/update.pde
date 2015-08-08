@@ -24,7 +24,7 @@ void safe(){
     ts = abs(c.dispH*c.view/pd.y);
   }
   if(twoCam&&ts>20){
-    if(lenOf(sub(c1.pos,c.rp(new v2(c.dispW*0.75,c.dispH*0.5))))<0.5&&lenOf(sub(c2.pos,c.rp(new v2(c.dispW*0.25,c.dispH*0.5))))<0.5)twoCam = false;
+    if(lenOf(sub(c1.pos,c.rp(new v2(c.dispW*0.75,c.dispH*0.5))))<1&&lenOf(sub(c2.pos,c.rp(new v2(c.dispW*0.25,c.dispH*0.5))))<1)twoCam = false;
     
     c1.upd(c.rp(new v2(c.dispW*0.75,c.dispH*0.5)),c.s);
     c2.upd(c.rp(new v2(c.dispW*0.25,c.dispH*0.5)),c.s);
