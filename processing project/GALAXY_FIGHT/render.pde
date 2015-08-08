@@ -12,6 +12,24 @@ void render(){
 //    rect(c.cp(new v2(i,j)),mult(new v2(1,1),c.cs(1)));
 //  }
   background(0);
-  c.draw();
+  if(twoCam){
+    
+    c1.draw();
+    c2.draw();
+    
+    stw += (10-stw)*0.1;
+    
+  }
+  else {
+    stw += (0-stw)*0.1;
+    c.draw();
+  }
+  
+  if(stw>0.2){
+    stroke(255);
+    strokeWeight(stw);
+    line(width*0.5,0,width*0.5,height);
+  }
+  
   //for(logger l : logs) l.draw();
 }

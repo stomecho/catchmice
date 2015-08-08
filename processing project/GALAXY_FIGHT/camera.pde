@@ -1,4 +1,7 @@
 cam c = new cam();
+cam c1 = new cam();
+cam c2 = new cam();
+boolean twoCam = false;
 
 class cam{
   v2 pos;
@@ -6,7 +9,7 @@ class cam{
   v2 offset;
   float s;
   float ts;
-  float k = 0.15;
+  float k = 0.02;
   float view = 0.4;
   float max = 60;
   float dispW;
@@ -19,15 +22,9 @@ class cam{
     s = 20;
     ts = 10;
   }
-  void upd(){
-    tpos = mult(add(p1.pos,p2.pos),0.5);
+  void upd(v2 tpos,float ts){
     pos = add(pos,mult(sub(tpos,pos),k));
-    if((float)abs(pd.x/pd.y)>=(float)dispW/dispH){
-      ts = abs(dispW*view/pd.x);
-    }else{
-      ts = abs(dispH*view/pd.y);
-    }
-    if(ts>max)ts=max;
+    
     s += (ts-s)*k;
   }
   v2 cp(v2 p){
@@ -90,4 +87,13 @@ class cam{
     s = mult(s,cs(1));
     display.ellipse(p.x,p.y,s.x,s.y);
   }
+}
+
+
+void toTwoCam(){
+  c1.s=c.s;
+  c2.s=c.s;
+  c1.pos=c.rp(new v2(c.dispW*0.75,c.dispH*0.5));
+  c2.pos=c.rp(new v2(c.dispW*0.25,c.dispH*0.5));
+  twoCam = true;
 }

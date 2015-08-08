@@ -1,6 +1,6 @@
 int[][] map = new int[500][500];
-int mw = 20;
-int mh = 20;
+int mw = 400;
+int mh = 400;
 player p1 = new player();
 player p2 = new player();
 
@@ -36,6 +36,11 @@ void setup(){
 void draw(){
   c.dispW = width;
   c.dispH = height;
+  c1.dispW = width*0.5;
+  c1.dispH = height;
+  c2.dispW = width*0.5;
+  c2.dispH = height;
+  c1.offset.x = width*0.5;
   
   deltaTime+=millis()-pmillis;
   pmillis=millis();
