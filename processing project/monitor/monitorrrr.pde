@@ -19,8 +19,11 @@ class Monitor{
   void add(float h){
     save[0]=String.valueOf(rhi[rhi.length-1]);
     saveStrings("監視器名稱log.txt",save);
+    float[] dwaj=new float[100];
     for(int i=1;i<100;i++)
-      rhi[i]=rhi[i-1];
+      dwaj[i]=rhi[i-1];
+    for(int i=1;i<100;i++)
+       rhi[i]=dwaj[i];
     rhi[0]=h;
     if(h>maxi)maxi=h;
     for(int i=0;i<100;i++)
@@ -38,9 +41,9 @@ class Monitor{
     rect(x+i*b,y+100-hi[i],b,hi[i]);
     //average
     stroke(#FFE967);
-    line(x,arg,x+100,arg);
+    line(x,y+100-arg,x+100,y+100-arg);
     stroke(#FF5E00);
-    line(x,hi[max],x+100,hi[max]);
+    line(x,y+100-hi[max],x+100,y+100-hi[max]);
   }
   void pressed(){
     if(mousePressed)
