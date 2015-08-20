@@ -33,6 +33,7 @@
 //* 請勿使用ArrayList 效能太差~
 //收到說右
 Monitor cc=new Monitor(500,500);
+int t;
 void setup(){
   size(1000,1000);
 strokeWeight(5);
