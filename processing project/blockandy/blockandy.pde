@@ -29,6 +29,12 @@ void draw(){
   for(int i=0;i<block.size();i++){
     block.get(i).draw();
   }
+  System.gc();
+    Runtime rt = Runtime.getRuntime();
+    long usedMB = (rt.totalMemory() - rt.freeMemory()) / 1024 / 1024;
+//    logger.information(this, "memory usage" + usedMB);
+    fill(0);
+    text(usedMB,500,500);
 }
 
 
