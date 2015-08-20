@@ -20,11 +20,11 @@ class bk {
       else
         if(in!=sta)in2=sta;            
       if(mouseButton == LEFT){
-        if(in==true&&in2==false)if(sta==false)a=#BAFF95;
-        if(in==false&&in2==true)if(sta==true)a=#FFA390;
+        if(in&&(!in2))if(!sta)a=#BAFF95;
+        if((!in)&&in2)if(sta)a=#FFA390;
       }
       if(mouseButton == RIGHT){
-        if(in==true&&in2==false)if(sta==false){
+        if(in&&(!in2)if(!sta){
           make=true;
           a=#86DAFF;
         }
@@ -39,11 +39,11 @@ class bk {
       if(make){
           boolean remove=false;
           for(int i=0;i<block.size();i++)
-            if(block.get(i).sta==true){
+            if(block.get(i).sta){
               block.remove(i);
               remove=true;
             }
-          if(remove==false){
+          if(!remove){
             block.add(new bk(mouseX,mouseY));
           }
         make=false;
